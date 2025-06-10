@@ -5,7 +5,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import { UserModule } from './user/user.module';
-//import { Product } from './product/entities/product.entity';
+import { Product } from './product/entities/product.entity';
 import { ProductModule } from './product/product.module';
 
 @Module({
@@ -15,7 +15,7 @@ import { ProductModule } from './product/product.module';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
-      playground: process.env.NODE_ENV !== 'production',
+      playground: true,
       introspection: true,
       path: '/graphql',
       context: ({ req }) => ({ req }),
@@ -56,7 +56,7 @@ import { ProductModule } from './product/product.module';
       inject: [ConfigService],
     }),
     UserModule,
-    //ProductModule,
+    ProductModule,
   ],
   controllers: [],
   providers: [],
