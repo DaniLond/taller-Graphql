@@ -1,0 +1,142 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: ID!
+  email: String!
+  fullName: String!
+  isActive: Boolean!
+  roles: [String!]!
+}
+
+type AuthResponse {
+  user: User!
+  token: String!
+}
+
+type DeleteUserResponse {
+  message: String!
+}
+
+type Product {
+  """Product unique identifier"""
+  id: ID!
+
+  """Product name"""
+  name: String!
+
+  """Product description"""
+  description: String!
+
+  """Product price"""
+  price: Float!
+
+  """Indicates whether the product is active"""
+  isActive: Boolean!
+
+  """Product category"""
+  category: ProductCategories!
+
+  """Product image URL"""
+  imageUrl: String
+}
+
+"""Product categories available"""
+enum ProductCategories {
+  burgers
+  Accompaniments
+  drinks
+}
+
+type DeleteProductResponse {
+  """Success message"""
+  message: String!
+}
+
+type Query {
+  users: [User!]!
+  user(email: String!): User!
+  profile: User!
+
+  """Get all active products with pagination"""
+  products: [Product!]!
+
+  """Get a product by name"""
+  product(name: String!): Product!
+
+  """Get a product by ID"""
+  productById(id: ID!): Product!
+}
+
+type Mutation {
+  registerUser(createUserInput: CreateUserInput!): AuthResponse!
+  loginUser(loginUserInput: LoginUserInput!): AuthResponse!
+  updateUser(email: String!, updateUserInput: UpdateUserInput!): User!
+  deleteUser(email: String!): DeleteUserResponse!
+
+  """Create a new product"""
+  createProduct(createProductInput: CreateProductInput!): Product!
+
+  """Update a product"""
+  updateProduct(updateProductInput: UpdateProductInput!): Product!
+
+  """Delete a product"""
+  deleteProduct(name: String!): DeleteProductResponse!
+}
+
+input CreateUserInput {
+  email: String!
+  password: String!
+  fullName: String!
+}
+
+input LoginUserInput {
+  email: String!
+  password: String!
+}
+
+input UpdateUserInput {
+  email: String
+  password: String
+  fullName: String
+  isActive: Boolean
+  roles: [String!]
+}
+
+input CreateProductInput {
+  """Product name"""
+  name: String!
+
+  """Product description"""
+  description: String!
+
+  """Product price"""
+  price: Float!
+
+  """Product category"""
+  category: ProductCategories!
+
+  """Product image URL"""
+  imageUrl: String
+}
+
+input UpdateProductInput {
+  """Product name"""
+  name: String
+
+  """Product description"""
+  description: String
+
+  """Product price"""
+  price: Float
+
+  """Product category"""
+  category: ProductCategories
+
+  """Product image URL"""
+  imageUrl: String
+
+  """Indicates whether the product is active"""
+  isActive: Boolean
+}
