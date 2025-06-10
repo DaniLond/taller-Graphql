@@ -12,7 +12,7 @@
   * **Módulo de usuarios** (`Users`)
   * **Módulo de productos** (`Products`)
 
-  ## Link del despligue: 
+## Link del despligue: 
 
    ```bash
       https://taller-graphql-gb0p.onrender.com/graphql
@@ -66,7 +66,7 @@ Asegúrate de tener instalado:
 * **Delivery:** Visualiza pedidos, no puede crear productos ni obtenerlos.
 
 
-## ❗ Dificultades encontradas
+##  Dificultades encontradas
 
 No se encontro ninguna dificultad 
 
